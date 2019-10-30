@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <script>
+    $(function () {
+        $("#delButton").click(function () {
+            $.ajax({   //发ajax请求
+                url:"/employees/1",
+                type:"delete"  //请求方式
+            })
+        })
+
+        $("#putButton").click(function () {
+            $.ajax({
+                url:"/employees/1",
+                type:"put",
+                data:{
+                    name:'admin'
+                }
+            })
+        })
+    })
+    </script>
+
+</head>
+<body>
+
+<button id="delButton">Delete</button>
+<button id="putButton">Modify</button>
+
+<!--表单提交put请求-->
+<form action="/employees/1" method="post">
+    <input name="name"/>
+    <input type="hidden" name="_method" value="put"/><!--隐藏域-->
+    <button type="submit">submit</button>
+</form>
+
+</body>
+</html>
+
+
+<!--Ajax RESTful-->
